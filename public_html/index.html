@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>sweetalert2</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-<script>
-  $(document).ready(function() {
-    const swalWithBootstrapButtons = Swal.mixin({
+const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
     confirmButton: 'btn btn-success',
     cancelButton: 'btn btn-danger'
@@ -40,9 +32,3 @@ swalWithBootstrapButtons.fire({
     )
   }
 })
-  });
-
-</script>
-
-</body>
-</html>
