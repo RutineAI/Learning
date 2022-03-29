@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>GitHub Profiles</title>
+    <script src="sweetalert2.all.min.js"></script>
   </head>
   <body>
     <form class="user-form" id="form">
@@ -17,5 +18,11 @@
       crossorigin="anonymous"
     ></script>
     <script src="script.js"></script>
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Something went wrong!',
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
   </body>
 </html>
