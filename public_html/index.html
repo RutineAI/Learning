@@ -1,76 +1,67 @@
-<!-- Based on Chat Interface by Florin Pop (2019)
-see: https://www.florin-pop.com/blog/2019/04/chat-interface/ -->
+<!-- Based on Sliding Sign In & Sign Up Form by Brad Traversy (2019)
+see: https://www.youtube.com/watch?v=mUdo6w87rh4 -->
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
-    <title>Chat Interface</title>
+    <title>Sliding Sign In & Sign Up Form</title>
   </head>
   <body>
-    <h2>Sarah</h2>
-    <div class="chat-container">
-      <ul class="chat">
-        <li class="message left">
-          <img
-            class="avatar"
-            src="https://randomuser.me/api/portraits/women/17.jpg"
-            alt=""
-          />
-          <p>Hello, I've found your friend's phone.</p>
-        </li>
-        <li class="message right">
-          <img
-            class="avatar"
-            src="https://randomuser.me/api/portraits/men/67.jpg"
-            alt=""
-          />
-          <p>Which of my friends are you talking about? :-)</p>
-        </li>
-        <li class="message left">
-          <img
-            class="avatar"
-            src="https://randomuser.me/api/portraits/women/17.jpg"
-            alt=""
-          />
-          <p>The one whose name is at the top of your screen right now.</p>
-        </li>
-        <li class="message right">
-          <img
-            class="avatar"
-            src="https://randomuser.me/api/portraits/men/67.jpg"
-            alt=""
-          />
-          <p>Yes, right, of course :-)</p>
-        </li>
-        <li class="message left">
-          <img
-            class="avatar"
-            src="https://randomuser.me/api/portraits/women/17.jpg"
-            alt=""
-          />
-          <p>Can you tell her that I've found her phone?</p>
-        </li>
-        <li class="message right">
-          <img
-            class="avatar"
-            src="https://randomuser.me/api/portraits/men/67.jpg"
-            alt=""
-          />
-          <p>Sure</p>
-        </li>
-        <li class="message right">
-          <img
-            class="avatar"
-            src="https://randomuser.me/api/portraits/men/67.jpg"
-            alt=""
-          />
-          <p>Some girl says she's got your phone.</p>
-        </li>
-      </ul>
-      <input type="text" class="text_input" placeholder="Message..." />
+    <div class="container" id="container">
+      <div class="form-container sign-up-container">
+        <form>
+          <h1>Sign Up</h1>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social"><i class="fab fa-google"></i></a>
+            <a href="#" class="social"><i class="fab fa-tiktok"></i></a>
+          </div>
+          <span>or use your email for registration</span>
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <button onclick="return false;">Sign Up</button>
+        </form>
+      </div>
+      <div class="form-container sign-in-container">
+        <form>
+          <h1>Sign In</h1>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social"><i class="fab fa-google"></i></a>
+            <a href="#" class="social"><i class="fab fa-tiktok"></i></a>
+          </div>
+          <span>or use your account</span>
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <a href="#">Forgot your password?</a>
+          <button onclick="return false;">Sign In</button>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>Please login with your personal info</p>
+            <button class="ghost" id="signIn">Sign In</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Hello, Friend!</h1>
+            <p>Enter your personal details and start your journey with us</p>
+            <button class="ghost" id="signUp">Sign Up</button>
+          </div>
+        </div>
+      </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
