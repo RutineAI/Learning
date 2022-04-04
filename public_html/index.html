@@ -1,34 +1,26 @@
-const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: 'btn btn-success',
-    cancelButton: 'btn btn-danger'
-  },
-  buttonsStyling: false
-})
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>DOM Array Methods</title>
+  </head>
+  <body>
+    <h1>DOM Array Methods</h1>
+    <div class="container">
+      <aside>
+        <button id="add-user">Add User 👱‍♂️</button>
+        <button id="double">Double Money 💰</button>
+        <button id="show-millionaires">Show Only Millionaires 💵</button>
+        <button id="sort">Sort by Richest ↓</button>
+        <button id="calculate-wealth">Calculate entire Wealth 🧮</button>
+      </aside>
 
-swalWithBootstrapButtons.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonText: 'Yes, delete it!',
-  cancelButtonText: 'No, cancel!',
-  reverseButtons: true
-}).then((result) => {
-  if (result.isConfirmed) {
-    swalWithBootstrapButtons.fire(
-      'Deleted!',
-      'Your file has been deleted.',
-      'success'
-    )
-  } else if (
-    /* Read more about handling dismissals below */
-    result.dismiss === Swal.DismissReason.cancel
-  ) {
-    swalWithBootstrapButtons.fire(
-      'Cancelled',
-      'Your imaginary file is safe :)',
-      'error'
-    )
-  }
-})
+      <main id="main">
+        <h2><strong>Person</strong> Wealth</h2>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

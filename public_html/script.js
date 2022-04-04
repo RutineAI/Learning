@@ -1,80 +1,86 @@
-const APIURL = "https://api.github.com/users/";
-const form = document.getElementById("form");
 const main = document.getElementById("main");
-const search = document.getElementById("search");
+const addUserButton = document.getElementById("add-user");
+const doubleButton = document.getElementById("double");
+const showMillionairesButton = document.getElementById("show-millionaires");
+const sortButton = document.getElementById("sort");
+const calculateWealthButton = document.getElementById("calculate-wealth");
 
-const createUserCard = (user) => {
-  const cardHTML = `
-    <div class="card">
-        <div>
-          <img
-            src="${user.avatar_url}"
-            alt="${user.name}"
-            class="avatar"
-          />
-        </div>
-        <div class="user-info">
-          <h2>${user.name}</h2>
-          <p>
-          ${user.bio}
-          </p>
-          <ul>
-            <li>${user.followers}<strong>Followers</strong></li>
-            <li>${user.following}<strong>Following</strong></li>
-            <li>${user.public_repos}<strong>Repos</strong></li>
-          </ul>
-          <div id="repos">
-          </div>
-        </div>
-      </div>
-    `;
-  main.innerHTML = cardHTML;
-};
+let data = [];
 
-const createErrorCard = (message) => {
-  const cardHTML = `
-    <div class="card"><h1>${message}</h1></div>
-    `;
-  main.innerHTML = cardHTML;
-};
+async function getRandomUser() {
+  const res = await fetch("https://randomuser.me/api");
+  const data = await res.json();
+  const user = data.results[0];
+  const newUser = {
+    name: `${user.name.first} ${user.name.last}`,
+    money: Math.floor(Math.random() * 1000000),
+  };
+  addData(newUser);
+}
 
-const addReposToCard = (repos) => {
-  const reposElement = document.getElementById("repos");
-  repos.slice(0, 5).forEach((repo) => {
-    const repoElement = document.createElement("a");
-    repoElement.classList.add("repo");
-    repoElement.href = repo.html_url;
-    repoElement.target = "_blank";
-    repoElement.innerText = repo.name;
-    reposElement.appendChild(repoElement);
+function addData(user) {
+  data.push(user);
+  updateDOM();
+}
+
+// forEach()
+function updateDOM(providedData = data) {
+  main.innerHTML = "<h2><strong>Person</strong> Wealth</h2>";
+  providedData.forEach((person) => {
+    const element = document.createElement("div");
+    element.classList.add("person");
+    element.innerHTML = `<strong>${person.name}</strong> ${formatMoney(
+      person.money
+    )}`;
+    main.appendChild(element);
   });
-};
+}
 
-const getUser = async (username) => {
-  try {
-    const { data } = await axios(APIURL + username);
-    createUserCard(data);
-    getRepos(username);
-  } catch (error) {
-    if (error.response.status == 404)
-      createErrorCard("No profile with this username");
-  }
-};
+// Format number as money - https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
+function formatMoney(number) {
+  return "$" + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+}
 
-const getRepos = async (username) => {
-  try {
-    const { data } = await axios(APIURL + username + "/repos?sort=created");
-    addReposToCard(data);
-  } catch (error) {
-    createErrorCard("Problem fetching repos");
-  }
-};
+// map()
+function doubleMoney() {
+  data = data.map((user) => {
+    return { ...user, money: user.money * 2 };
+  });
+  updateDOM();
+}
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const user = search.value;
-  if (user) {
-    getUser(user);
-    search.value = "";
-  }
-});
+// sort()
+function sortByRichest() {
+  data.sort((a, b) => b.money - a.money);
+  updateDOM();
+}
+
+// filter()
+function showMillionaires() {
+  data = data.filter((user) => user.money > 1000000);
+  updateDOM();
+}
+
+// reduce()
+function calculateWealth() {
+  const wealth = data.reduce(
+    (accumulator, user) => (accumulator += user.money),
+    0
+  );
+  const wealthElement = document.createElement("div");
+  wealthElement.innerHTML = `<h3>Total wealth: <strong>${formatMoney(
+    wealth
+  )}</strong></h3>`;
+  main.appendChild(wealthElement);
+}
+
+addUserButton.addEventListener("click", getRandomUser);
+doubleButton.addEventListener("click", doubleMoney);
+sortButton.addEventListener("click", sortByRichest);
+showMillionairesButton.addEventListener("click", showMillionaires);
+calculateWealthButton.addEventListener("click", calculateWealth);
+
+// Init
+getRandomUser();
+getRandomUser();
+getRandomUser();
