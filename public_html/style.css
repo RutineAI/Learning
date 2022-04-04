@@ -1,107 +1,191 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nixie+One&display=swap");
+
+:root {
+  --primary-color: #2d2254;
+  --secondary--color: #f5c42f;
+  --text-color: #c5bbec;
+}
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background-color: #eef1f8;
-  color: #807e87;
-  font-family: "Roboto", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
+  font-family: "Nixie One", cursive;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 1.125rem;
+  line-height: 1.6;
 }
 
-.container {
-  display: flex;
-  padding: 20px;
-  margin: 0 auto;
-  max-width: 100%;
-  width: 800px;
+h1,
+h2,
+h3,
+p {
+  margin-bottom: 0.625rem;
 }
 
-aside {
-  padding: 10px 20px;
-  width: 250px;
-  border-right: 1px solid #bac6e1;
+a {
+  text-decoration: none;
+  color: #fff;
 }
 
-button {
-  cursor: pointer;
-  background-color: #fff;
-  color: #46464a;
-  border: solid 1px #bac6e1;
-  border-radius: 5px;
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
+ul {
+  list-style: none;
+}
+
+.btn {
+  display: inline-block;
+  border: 0;
+  background-color: var(--secondary--color);
+  color: #fff;
+  border-radius: 20px;
+  padding: 0.5rem 2rem;
+  text-transform: uppercase;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 1rem;
+  margin-top: 10px;
 }
 
-main {
-  flex: 1;
-  padding: 10px 20px;
+.btn:hover {
+  transform: scale(0.98);
 }
 
-h1 {
-  color: #46464a;
+.primary-text {
+  color: var(--primary-color);
 }
 
-h2 {
-  border-bottom: 1px solid #bac6e1;
-  color: #9a9da4;
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 300;
-  margin: 0 0 20px;
+.secondary-text {
+  color: var(--secondary--color);
 }
 
-h3 {
-  background-color: #fff;
-  color: #9a9da4;
-  border-bottom: 1px solid #bac6e1;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 300;
-  margin: 20px 0 0;
+.section {
+  position: relative;
+  padding: 0 20px;
 }
 
-.person {
-  display: flex;
-  justify-content: space-between;
-  font-size: 20px;
-  margin-bottom: 10px;
+.section-top {
+  min-height: 200px;
+  padding-top: 20px;
+  background: url("https://i.ibb.co/PhVR2Vh/bg1.png") no-repeat center
+    center/cover;
 }
 
-@media (max-width: 768px) {
-  body {
-    justify-content: flex-start;
+.section-top .content {
+  text-align: center;
+}
+
+.section-top .content h1 {
+  font-size: 45px;
+}
+
+.section-top .content,
+.section-stream .play,
+.section-stream .content {
+  position: static;
+  width: 100%;
+}
+
+.section-stream {
+  min-height: 400px;
+  background: url("https://i.ibb.co/bsX6RV0/bg2.png") no-repeat center
+    center/cover;
+}
+
+.section-stream h2 {
+  font-size: 35px;
+}
+
+.section-stream .play {
+  width: 50%;
+  display: block;
+  margin: 30px auto;
+  opacity: 0.5;
+}
+
+.section-stream .content > div,
+.section-grid > div {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.section-grid {
+  display: block;
+  margin-top: 0;
+  text-align: center;
+}
+
+.section-grid p {
+  color: var(--text-color);
+}
+
+.section-grid .dot {
+  font-size: 40px;
+  padding-left: 2px;
+}
+
+.footer {
+  border-top: var(--text-color) 1px solid;
+  padding: 30px;
+  margin-top: 20px;
+}
+
+.footer ul {
+  display: block;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .section-top {
+    min-height: 500px;
+    padding-top: 0;
   }
-  .container {
-    padding: 0;
-    flex-direction: column;
-    justify-content: center;
-    width: 96%;
-    max-width: 96%;
+
+  .section-top .content {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    width: 55%;
   }
-  aside {
-    padding: 0;
-    margin: auto;
+
+  .section-top .content h1 {
+    font-size: 70px;
+    text-align: left;
+    line-height: 1.3;
+  }
+
+  .section-stream {
+    min-height: 700px;
+  }
+
+  .section-stream .play {
+    width: 27%;
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    opacity: 1;
+  }
+
+  .section-stream .content {
+    position: absolute;
+    width: 50%;
+    top: 130px;
+    right: 70px;
+  }
+
+  .section-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+
+  .footer ul {
     display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    border-right: none;
-  }
-  main {
-    padding: 0;
+    align-items: center;
+    justify-content: space-around;
   }
 }
