@@ -1,98 +1,76 @@
-<!-- Based on Parallax Landing Page - Rellax.js by Brad Traversy (2020)
-see: https://www.youtube.com/watch?v=aAxt0Z7IXIo -->
+<!-- Based on Chat Interface by Florin Pop (2019)
+see: https://www.florin-pop.com/blog/2019/04/chat-interface/ -->
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-      crossorigin="anonymous"
-    />
     <link rel="stylesheet" href="style.css" />
-    <title>Parallax Landing Page</title>
+    <title>Chat Interface</title>
   </head>
   <body>
-    <section class="section section-top">
-      <div class="content rellax" data-rellax-speed="5">
-        <h1>Don't just start. Continue. Ship. Repeat.</h1>
-        <a href="#" class="btn">Learn More</a>
-      </div>
-    </section>
-    <section class="section section-stream">
-      <img
-        class="play rellax"
-        src="https://i.ibb.co/Fn2SWJh/play.png"
-        alt="Play"
-        data-rellax-speed="0"
-        data-rellax-xs-speed="-5"
-      />
-      <div class="content rellax" data-rellax-speed="10">
-        <div>
-          <h2 class="secondary-text">Stream Everything</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
-            fugit molestiae placeat nesciunt autem et quos sapiente voluptates,
-            magnam doloribus?
-          </p>
-        </div>
-        <div>
-          <h2 class="secondary-text">Short is the New Long</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
-            fugit molestiae placeat nesciunt autem et quos sapiente voluptates,
-            magnam doloribus?
-          </p>
-        </div>
-      </div>
-    </section>
-    <section class="section section-grid">
-      <div class="rellax" data-rellax-speed="1" data-rellax-xs-speed="3">
-        <i class="fas fa-video fa-3x secondary-text"></i>
-        <h2>Watch<span class="secondary-text dot">.</span></h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque fugit
-          molestiae placeat nesciunt autem et quos sapiente voluptates, magnam
-          doloribus?
-        </p>
-      </div>
-      <div class="rellax" data-rellax-speed="4" data-rellax-xs-speed="3">
-        <i class="fas fa-users fa-3x secondary-text"></i>
-        <h2>Share<span class="secondary-text dot">.</span></h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque fugit
-          molestiae placeat nesciunt autem et quos sapiente voluptates, magnam
-          doloribus?
-        </p>
-      </div>
-      <div class="rellax" data-rellax-speed="7" data-rellax-xs-speed="3">
-        <i class="fas fa-book fa-3x secondary-text"></i>
-        <h2>Learn<span class="secondary-text dot">.</span></h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque fugit
-          molestiae placeat nesciunt autem et quos sapiente voluptates, magnam
-          doloribus?
-        </p>
-      </div>
-    </section>
-    <footer class="footer">
-      <ul>
-        <li><a href="#">Faq</a></li>
-        <li><a href="#">Terms of Use</a></li>
-        <li><a href="#">Privacy Notice</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">About Us</a></li>
+    <h2>Sarah</h2>
+    <div class="chat-container">
+      <ul class="chat">
+        <li class="message left">
+          <img
+            class="avatar"
+            src="https://randomuser.me/api/portraits/women/17.jpg"
+            alt=""
+          />
+          <p>Hello, I've found your friend's phone.</p>
+        </li>
+        <li class="message right">
+          <img
+            class="avatar"
+            src="https://randomuser.me/api/portraits/men/67.jpg"
+            alt=""
+          />
+          <p>Which of my friends are you talking about? :-)</p>
+        </li>
+        <li class="message left">
+          <img
+            class="avatar"
+            src="https://randomuser.me/api/portraits/women/17.jpg"
+            alt=""
+          />
+          <p>The one whose name is at the top of your screen right now.</p>
+        </li>
+        <li class="message right">
+          <img
+            class="avatar"
+            src="https://randomuser.me/api/portraits/men/67.jpg"
+            alt=""
+          />
+          <p>Yes, right, of course :-)</p>
+        </li>
+        <li class="message left">
+          <img
+            class="avatar"
+            src="https://randomuser.me/api/portraits/women/17.jpg"
+            alt=""
+          />
+          <p>Can you tell her that I've found her phone?</p>
+        </li>
+        <li class="message right">
+          <img
+            class="avatar"
+            src="https://randomuser.me/api/portraits/men/67.jpg"
+            alt=""
+          />
+          <p>Sure</p>
+        </li>
+        <li class="message right">
+          <img
+            class="avatar"
+            src="https://randomuser.me/api/portraits/men/67.jpg"
+            alt=""
+          />
+          <p>Some girl says she's got your phone.</p>
+        </li>
       </ul>
-    </footer>
-
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"
-      integrity="sha512-f5HTYZYTDZelxS7LEQYv8ppMHTZ6JJWglzeQmr0CVTS70vJgaJiIO15ALqI7bhsracojbXkezUIL+35UXwwGrQ=="
-      crossorigin="anonymous"
-    ></script>
-    <script src="script.js"></script>
+      <input type="text" class="text_input" placeholder="Message..." />
+    </div>
   </body>
 </html>
