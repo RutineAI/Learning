@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+</style>
+</head>
+<body>
+
+<h1>Work in progress</h1>
+<script>
+    window.onUsersnapCXLoad = function(api) {
+      api.init();
+    }
+    var script = document.createElement('script');
+    script.defer = 1;
+    script.src = 'https://widget.usersnap.com/global/load/6fd5a601-07d2-457e-a60c-2062b4a2c1f9?onload=onUsersnapCXLoad';
+    document.getElementsByTagName('head')[0].appendChild(script);
+  </script>
+  
+</body>
+</html>
