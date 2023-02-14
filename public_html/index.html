@@ -7,9 +7,34 @@
     <link rel="stylesheet" href="styles/styles.css">
     <title>Simple Quiz</title>
 </head>
+
 <body>
+    
 <div id="quiz-app">
-    <div class="body expanded">  <script data-jsd-embedded data-key="eadc6a45-b736-4f92-bacd-c7c111ba9e37" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"> </script> </div>
+    
+
+    <div id="jira-widget-container"></div>
+    
+    <script data-jsd-embedded data-key="eadc6a45-b736-4f92-bacd-c7c111ba9e37" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+    
+    <script type="text/javascript">
+      // Wait for the Jira widget to finish loading
+      window.addEventListener('message', function(event) {
+        if (event.data === 'jsd-widget-loaded') {
+          // Get the iframe and its content
+          const iframe = document.querySelector('#jsd-widget');
+          const iframeContent = iframe.contentDocument;
+    
+          // Force the Jira widget to expand by default
+          const body = iframeContent.querySelector('.body');
+          body.classList.add('expanded');
+        }
+      });
+    </script>
+    
+    
+
+
     <section class="center-card quiz-details" id="quiz-details">
         <div class="quiz-details__question-icon">
             <svg viewBox="-10 -10 540 540" width="85px" height="85px">
