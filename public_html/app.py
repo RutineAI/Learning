@@ -11,7 +11,9 @@ class Task(db.Model):
     bike_details = db.Column(db.String(120), nullable=False)
     cost = db.Column(db.Float, nullable=False)
 
-db.create_all()
+# Create the database tables if they don't exist
+with app.app_context():
+    db.create_all()
 
 @app.route('/')
 def index():
