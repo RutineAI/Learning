@@ -138,4 +138,8 @@ main {
     margin-bottom: 2rem;
 }
 
-@media (max-width:
+@media (max-width: 768px) {
+    .chart-container {
+        width: 100%;
+    }
+}
