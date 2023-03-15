@@ -1,5 +1,5 @@
 # Backend (using Flask)
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -11,6 +11,10 @@ class Task(db.Model):
     description = db.Column(db.String(255), nullable=False)
     bike_details = db.Column(db.String(255), nullable=False)
     cost = db.Column(db.Float, nullable=False)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 @app.route("/tasks", methods=["POST"])
 def create_task():
@@ -29,4 +33,3 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
     app.run(debug=True, host="0.0.0.0")
-    
