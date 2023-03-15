@@ -67,3 +67,31 @@ h1 {
     margin-bottom: 10px;
     color: green;
 }
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #4CAF50;
+    padding: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 1em;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+

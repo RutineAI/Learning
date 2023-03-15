@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <!-- Add more menu items as needed -->
+        </ul>
+    </nav>
     <h1>Bike Shop Task Manager</h1>
     <form id="task-form">
         <label for="description">Task Description:</label>
@@ -20,7 +26,28 @@
     <div id="confirmation-message"></div>
     <ul id="task-list"></ul>
     <script>
-        // ... (JavaScript code unchanged) ...
+        // Existing JavaScript code
+
+        function createTaskItemElement(task) {
+            const li = document.createElement("li");
+            li.textContent = `Task: ${task.description}, Bike Details: ${task.bike_details}, Cost: ${task.cost}`;
+            // Add any additional task information or styling here
+            return li;
+        }
+
+        async function fetchTasks() {
+            const response = await fetch("/tasks");
+            const tasks = await response.json();
+            const taskList = document.getElementById("task-list");
+            taskList.innerHTML = ""; // Clear existing task list
+            tasks.forEach(task => {
+                const li = createTaskItemElement(task);
+                taskList.appendChild(li);
+            });
+        }
+
+        // Fetch tasks initially
+        fetchTasks();
     </script>
 </body>
 </html>
