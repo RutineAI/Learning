@@ -160,3 +160,20 @@ main {
 .expanded {
     margin-left: 0;
 }
+
+.charts {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.chart-container {
+    width: 45%;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .chart-container {
+        width: 100%;
+    }
+}
