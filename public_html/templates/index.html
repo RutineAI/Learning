@@ -1,48 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bike Shop Task Manager</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/1ovF5h5zCY/s5Uu8szDfIe/xaK5cm+t9/6qEEU" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
-    <nav>
-        <ul>
-            <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#"><i class="fas fa-plus"></i> Placeholder 1</a></li>
-            <li><a href="#"><i class="fas fa-cog"></i> Placeholder 2</a></li>
-            <li><a href="#"><i class="fas fa-info"></i> Placeholder 3</a></li>
-        </ul>
-    </nav>
-    <main>
-        <h1>Bike Shop Dashboard</h1>
-        <section class="charts">
-            <div class="chart-container">
-                <h2>Bikes Sold</h2>
-                <canvas id="bikesSoldChart"></canvas>
-            </div>
-            <div class="chart-container">
-                <h2>Tasks Closed</h2>
-                <canvas id="tasksClosedChart"></canvas>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        // Menu folding functionality
-        const menuToggle = document.getElementById('menu-toggle');
-        const nav = document.querySelector('nav');
-        const main = document.querySelector('main');
+<!-- ... -->
+<script>
+    // Menu folding functionality
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.querySelector('nav');
+    const main = document.querySelector('main');
         
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('folded');
-            main.classList.toggle('expanded');
-        });
+    menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('folded');
+        main.classList.toggle('expanded');
+    });
 
+    function initCharts() {
         // Initialize charts
         const bikesSoldChart = new Chart(document.getElementById("bikesSoldChart"), {
             type: 'bar',
@@ -71,4 +39,22 @@
                 labels: ["January", "February", "March", "April", "May", "June", "July"],
                 datasets: [{
                     label: "Tasks Closed",
-                    data: [28, 48, 40, 19, 86, 27,
+                    data: [28, 48, 40, 19, 86, 27, 90],
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', initCharts);
+</script>
+<!-- ... -->
