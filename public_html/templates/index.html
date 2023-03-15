@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bike Shop Task Manager</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/1ovF5h5zCY/s5Uu8szDfIe/xaK5cm+t9/6qEEU" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 <body>
     <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
@@ -19,42 +17,22 @@
             <li><a href="#"><i class="fas fa-cog"></i> Placeholder 2</a></li>
             <li><a href="#"><i class="fas fa-info"></i> Placeholder 3</a></li>
         </ul>
-        
     </nav>
     <main>
-            <h1>Bike Shop Dashboard</h1>
-            <section class="charts">
-                <div class="chart-container">
-                    <h2>Bikes Sold</h2>
-                    <canvas id="bikesSoldChart"></canvas>
-                </div>
-                <div class="chart-container">
-                    <h2>Tasks Closed</h2>
-                    <canvas id="tasksClosedChart"></canvas>
-                </div>
-            </section>
+        <h1>Bike Shop Dashboard</h1>
+        <section class="charts">
+            <div class="chart-container">
+                <h2>Bikes Sold</h2>
+                <canvas id="bikesSoldChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>Tasks Closed</h2>
+                <canvas id="tasksClosedChart"></canvas>
+            </div>
+        </section>
     </main>
 
-
     <script>
-    // Your existing JavaScript code
-    function createTaskItemElement(task) {
-            const li = document.createElement("li");
-            li.textContent = `Task: ${task.description}, Bike Details: ${task.bike_details}, Cost: ${task.cost}`;
-            // Add any additional task information or styling here
-            return li;
-        }
-
-        async function fetchTasks() {
-            const response = await fetch("/tasks");
-            const tasks = await response.json();
-            const taskList = document.getElementById("task-list");
-            taskList.innerHTML = ""; // Clear existing task list
-            tasks.forEach(task => {
-                const li = createTaskItemElement(task);
-                taskList.appendChild(li);
-            });
-        }
         // Menu folding functionality
         const menuToggle = document.getElementById('menu-toggle');
         const nav = document.querySelector('nav');
