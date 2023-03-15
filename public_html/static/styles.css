@@ -132,3 +132,31 @@ main {
     margin-left: 200px;
     padding: 1em;
 }
+
+/* Add any additional CSS for the navigation menu */
+
+/* ... (previous nav styles) ... */
+
+.menu-toggle {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    position: fixed;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.folded {
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+}
+
+main {
+    /* ... (previous main styles) ... */
+    transition: margin-left 0.3s;
+}
+
+.expanded {
+    margin-left: 0;
+}
