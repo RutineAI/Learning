@@ -1,0 +1,82 @@
+{
+  "userSays": [
+    {
+      "id": "f00a8363-d2a7-464c-a516-756bd0fd9579",
+      "data": [
+        {
+          "text": "remind me to "
+        },
+        {
+          "text": "mytask",
+          "alias": "task_name",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "7c052d38-ea4b-4fea-81d9-c848ed9817e3",
+      "data": [
+        {
+          "text": "new task "
+        },
+        {
+          "text": "mytask",
+          "alias": "task_name",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "f06eb6c2-f666-4ef4-b611-26ef40c07fad",
+      "data": [
+        {
+          "text": "add task "
+        },
+        {
+          "text": "mytask",
+          "alias": "task_name",
+          "meta": "@sys.any",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ],
+  "id": "fd7540a4-6124-4261-8610-0cb58f53901a",
+  "name": "Add Task",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "input.task_add",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "dataType": "@sys.any",
+          "name": "task_name",
+          "value": "$task_name",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ]
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}
