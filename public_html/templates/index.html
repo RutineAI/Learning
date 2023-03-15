@@ -1,102 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bike Shop Task Manager</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+<script>
+    document.getElementById("task-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const description = document.getElementById("description").value;
+        const bikeDetails = document.getElementById("bike-details").value;
+        const cost = document.getElementById("cost").value;
 
-        h1 {
-            text-align: center;
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-        }
+        const response = await fetch("/tasks", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ description, bike_details: bikeDetails, cost }),
+        });
 
-        #task-form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-            width: 80%;
-            max-width: 400px;
-        }
+        const data = await response.json();
+        console.log(data);
 
-        #task-form input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+        // Display confirmation message
+        const confirmationMessage = document.getElementById("confirmation-message");
+        confirmationMessage.textContent = `Task created with ID: ${data.task}`;
+        setTimeout(() => {
+            confirmationMessage.textContent = "";
+        }, 3000);
 
-        #task-form button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+        // Clear input fields
+        document.getElementById("description").value = "";
+        document.getElementById("bike-details").value = "";
+        document.getElementById("cost").value = "";
 
-        #task-form button:hover {
-            background-color: #45a049;
-        }
+        // Fetch updated tasks
+        fetchTasks();
+    });
 
-        #task-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 20px auto;
-            width: 80%;
-        }
+    async function fetchTasks() {
+        const response = await fetch("/tasks");
+        const tasks = await response.json();
+        const taskList = document.getElementById("task-list");
+        taskList.innerHTML = ""; // Clear existing task list
+        tasks.forEach(task => {
+            const li = document.createElement("li");
+            li.textContent = `Task: ${task.description}, Bike Details: ${task.bike_details}, Cost: ${task.cost}`;
+            taskList.appendChild(li);
+        });
+    }
 
-        #task-list li {
-            background-color: white;
-            padding: 12px;
-            margin-bottom: 5px;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-        }
-
-        #confirmation-message {
-            text-align: center;
-            margin-bottom: 10px;
-            color: green;
-        }
-    </style>
-</head>
-<body>
-    <h1>Bike Shop Task Manager</h1>
-    <form id="task-form">
-        <label for="description">Task Description:</label>
-        <input type="text" id="description" required>
-        <label for="bike-details">Bike Details:</label>
-        <input type="text" id="bike-details" required>
-        <label for="cost">Cost:</label>
-        <input type="number" id="cost" required>
-        <button type="submit">Create Task</button>
-    </form>
-    <div id="confirmation-message"></div>
-    <ul id="task-list"></ul>
-    <script>
-        document.getElementById("task-form").addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const description = document.getElementById("description").value;
-            const bikeDetails = document.getElementById("bike-details").value;
-            const cost = document.getElementById("cost").value;
-
-            const response = await fetch("/tasks", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body:
+    fetchTasks();
+</script>
