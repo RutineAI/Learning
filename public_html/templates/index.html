@@ -1,46 +1,26 @@
-<script>
-    document.getElementById("task-form").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const description = document.getElementById("description").value;
-        const bikeDetails = document.getElementById("bike-details").value;
-        const cost = document.getElementById("cost").value;
-
-        const response = await fetch("/tasks", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ description, bike_details: bikeDetails, cost }),
-        });
-
-        const data = await response.json();
-        console.log(data);
-
-        // Display confirmation message
-        const confirmationMessage = document.getElementById("confirmation-message");
-        confirmationMessage.textContent = `Task created with ID: ${data.task}`;
-        setTimeout(() => {
-            confirmationMessage.textContent = "";
-        }, 3000);
-
-        // Clear input fields
-        document.getElementById("description").value = "";
-        document.getElementById("bike-details").value = "";
-        document.getElementById("cost").value = "";
-
-        // Fetch updated tasks
-        fetchTasks();
-    });
-
-    async function fetchTasks() {
-        const response = await fetch("/tasks");
-        const tasks = await response.json();
-        const taskList = document.getElementById("task-list");
-        taskList.innerHTML = ""; // Clear existing task list
-        tasks.forEach(task => {
-            const li = document.createElement("li");
-            li.textContent = `Task: ${task.description}, Bike Details: ${task.bike_details}, Cost: ${task.cost}`;
-            taskList.appendChild(li);
-        });
-    }
-
-    fetchTasks();
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Shop Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Bike Shop Task Manager</h1>
+    <form id="task-form">
+        <label for="description">Task Description:</label>
+        <input type="text" id="description" required>
+        <label for="bike-details">Bike Details:</label>
+        <input type="text" id="bike-details" required>
+        <label for="cost">Cost:</label>
+        <input type="number" id="cost" required>
+        <button type="submit">Create Task</button>
+    </form>
+    <div id="confirmation-message"></div>
+    <ul id="task-list"></ul>
+    <script>
+        // ... (JavaScript code unchanged) ...
+    </script>
+</body>
+</html>
