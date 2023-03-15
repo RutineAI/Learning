@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/1ovF5h5zCY/s5Uu8szDfIe/xaK5cm+t9/6qEEU" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
 <body>
     <button id="menu-toggle" class="menu-toggle">&#9776;</button>
@@ -42,27 +44,57 @@
         });
 
         function initCharts() {
-            // Initialize charts
-            const bikesSoldChart = new Chart(document.getElementById("bikesSoldChart"), {
-                type: 'bar',
-                data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
-                    datasets: [{
-                        label: "Bikes Sold",
-                        data: [65, 59, 80, 81, 56, 55, 40],
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
+    google.charts.load('current', { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawCharts);
+}
+
+function drawCharts() {
+    // Draw Bikes Sold chart
+    const bikesSoldData = google.visualization.arrayToDataTable([
+        ['Month', 'Bikes Sold'],
+        ['January', 65],
+        ['February', 59],
+        ['March', 80],
+        ['April', 81],
+        ['May', 56],
+        ['June', 55],
+        ['July', 40]
+    ]);
+
+    const bikesSoldOptions = {
+        title: 'Bikes Sold',
+        backgroundColor: 'transparent',
+        legend: { position: 'bottom' }
+    };
+
+    const bikesSoldChart = new google.visualization.ColumnChart(document.getElementById('bikesSoldChart'));
+    bikesSoldChart.draw(bikesSoldData, bikesSoldOptions);
+
+    // Draw Tasks Closed chart
+    const tasksClosedData = google.visualization.arrayToDataTable([
+        ['Month', 'Tasks Closed'],
+        ['January', 28],
+        ['February', 48],
+        ['March', 40],
+        ['April', 19],
+        ['May', 86],
+        ['June', 27],
+        ['July', 90]
+    ]);
+
+    const tasksClosedOptions = {
+        title: 'Tasks Closed',
+        backgroundColor: 'transparent',
+        legend: { position: 'bottom' },
+        curveType: 'function'
+    };
+
+    const tasksClosedChart = new google.visualization.LineChart(document.getElementById('tasksClosedChart'));
+    tasksClosedChart.draw(tasksClosedData, tasksClosedOptions);
+}
+
+document.addEventListener('DOMContentLoaded', initCharts);
+
 
             const tasksClosedChart = new Chart(document.getElementById("tasksClosedChart"), {
                 type: 'line',
