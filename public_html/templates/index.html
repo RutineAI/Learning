@@ -9,32 +9,31 @@
 </head>
 <body>
     <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
+    <nav>
+        <ul>
+            <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-plus"></i> Placeholder 1</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Placeholder 2</a></li>
+            <li><a href="#"><i class="fas fa-info"></i> Placeholder 3</a></li>
+        </ul>
+    </nav>
     <main>
-        <nav>
-            <ul>
-                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#"><i class="fas fa-plus"></i> Placeholder 1</a></li>
-                <li><a href="#"><i class="fas fa-cog"></i> Placeholder 2</a></li>
-                <li><a href="#"><i class="fas fa-info"></i> Placeholder 3</a></li>
-            </ul>
-        </nav>
-        <main>
-            <h1>Bike Shop Task Manager</h1>
-            <form id="task-form">
-                <label for="description">Task Description:</label>
-                <input type="text" id="description" required>
-                <label for="bike-details">Bike Details:</label>
-                <input type="text" id="bike-details" required>
-                <label for="cost">Cost:</label>
-                <input type="number" id="cost" required>
-                <button type="submit">Create Task</button>
-            </form>
-            <div id="confirmation-message"></div>
-            <ul id="task-list"></ul>
-                </main>
+        <h1>Bike Shop Task Manager</h1>
+        <form id="task-form">
+            <label for="description">Task Description:</label>
+            <input type="text" id="description" required>
+            <label for="bike-details">Bike Details:</label>
+            <input type="text" id="bike-details" required>
+            <label for="cost">Cost:</label>
+            <input type="number" id="cost" required>
+            <button type="submit">Create Task</button>
+        </form>
+        <div id="confirmation-message"></div>
+        <ul id="task-list"></ul>
+    </main>
     <script>
-        // Your existing JavaScript code
- function createTaskItemElement(task) {
+    // Your existing JavaScript code
+    function createTaskItemElement(task) {
             const li = document.createElement("li");
             li.textContent = `Task: ${task.description}, Bike Details: ${task.bike_details}, Cost: ${task.cost}`;
             // Add any additional task information or styling here
