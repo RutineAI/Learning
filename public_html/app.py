@@ -26,5 +26,6 @@ def get_tasks():
     return jsonify([{"id": task.id, "description": task.description, "bike_details": task.bike_details, "cost": task.cost} for task in tasks])
 
 if __name__ == "__main__":
-    db.create_all()
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
